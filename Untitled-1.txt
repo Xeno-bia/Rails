@@ -1,0 +1,66 @@
+# 構造
+App                         # ルート
+    /app                    # アプリ
+    /config                 # 設定
+        /routes.rb          # ルーティング
+    /controllers            # コントローラ
+        /home_controller.rb # x
+    /views                  # ビュー
+        /home               # x
+            /top.html.erb   # トップページ
+            /about.html.erb # ページ
+    /assets                 # リソース
+        /images             # 画像
+        /stylesheets        # CSS
+            /home.css       # x
+        /javascripts        # JS
+    /public                 # x
+        /top.jpg            # x
+        /tweets.png         # x
+    /db                     # データベース
+
+# アプリ作成
+> rails new App
+
+# トップページ作成
+> rails generate controller home top
+
+@ ルーティング
+Rails.application.routes.draw do
+    get "/" => "home#top"
+end
+
+@ コントローラ
+class HomeController < ApplicationController
+def top
+end
+
+@ ビュー
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>アプリ</title>
+    </head>
+    <body>
+        <h1>アプリ</h1>
+        <p>Hello World</p>
+    </body>
+</html>
+
+# ページ追加
+@ ルーティング
+↓を追加
+get "home/about" => "home#about"
+
+@ コントローラ
+↓を追加
+def about
+end
+
+@ ビュー
+ファイルを追加
+
+
+# サーバ起動
+> rails server #localhost:3000
